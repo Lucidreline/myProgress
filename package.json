@@ -4,7 +4,8 @@
   "description": "A way for me to track my work out progress, see inprovements.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Manuel Castaneda",
   "license": "ISC",
