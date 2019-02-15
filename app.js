@@ -7,7 +7,7 @@ var express          = require("express"),
     app              = express();
   
   
-mongoose.connect("mongodb://localhost:27017/progress", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://mannyiscool123:Nicecat101!@cluster0-f5cf3.mongodb.net/test?retryWrites=true", { useNewUrlParser: true })
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
