@@ -1,0 +1,72 @@
+<% include ./partials/header %>
+
+<!--<h1 class="text-center display-4 py-2 pb-4">Edit Log</h1>-->
+
+<!--<form action="/workouts/<%=workout._id%>?_method=PUT" method="POST" class="container" >-->
+<!--  <div class="form-group">-->
+<!--    <label>Name Your Workout</label>-->
+<!--    <input value="<%=workout.name%>"name="workout[name]" type="text" class="form-control" placeholder="Name">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >How Many calories Did You Burn?</label>-->
+<!--    <input value="<%=workout.calories%>"name="workout[calories]" type="text" class="form-control" placeholder="Calories">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >How Long Was Your Workout In Minutes?</label>-->
+<!--    <input value="<%=workout.durration%>" name="workout[durration]" type="text" class="form-control" placeholder="minutes">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >What Was Your Average Heart Rate In Beats Per Minute?</label>-->
+<!--    <input value="<%=workout.avgHeartRate%>"name="workout[avgHeartRate]" type="text" class="form-control" placeholder="Heart Rate">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >How Much Did You Weigh Today In Pounds?</label>-->
+<!--    <input value="<%=workout.weight%>"name="workout[weight]" type="text" class="form-control" placeholder="Weight">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >Give Your Workout A Photo!</label>-->
+<!--    <input value="<%=workout.image%>"name="workout[image]" type="text" class="form-control" placeholder="Image Url">-->
+<!--  </div>-->
+  
+<!--  <div class="form-group">-->
+<!--    <label >Give Us Some Details About Your Workout!</label>-->
+<!--    <input value="<%=workout.description%>"name="workout[description]" type="text" class="form-control" placeholder="Description">-->
+<!--  </div>-->
+  
+<!--  <button type="submit" class="btn btn-primary">Update</button>-->
+<!--</form>-->
+
+<h1 class="text-center display-4 py-2 pb-4">Create Workout</h1>
+
+<div class="container">
+  <form autocomplete="off" action="/workouts/<%=workout._id%>?_method=PUT" method="POST" method="post" class=" p-5 box" >
+      
+      <div class= "row">
+        <input  type="text" value="<%=workout.name%>" name="workout[name]" placeholder="Workout Name">
+        <input  type="text" value="<%=workout.calories%>" name="workout[calories]" placeholder="Calories Burned">
+      </div>
+      <div class= "row">
+        <input  type="text" value="<%=workout.durration%>"name="workout[durration]" placeholder="Workout Durration (minutes)">
+        <input  type="text" value="<%=workout.avgHeartRate%>"name="workout[avgHeartRate]" placeholder="Aveage Heart Rate (BPM)">
+      </div>
+      <div class= "row">
+        <input  type="text" value="<%=workout.weight%>" name="workout[weight]" placeholder="Today's Weight (lb)">
+        <input  type="text" value="<%=workout.image%>" name="workout[image]" placeholder="Workout Image URL">
+      </div>
+      <div class= "row">
+        <input type="number" name="workout[distance]" placeholder="Distance (Miles)">
+        <textarea value="<%=workout.description%>" name="workout[description]" placeholder="Workout Description"></textarea>
+      </div>
+  
+      <input type="submit" value="Log">
+      
+    </form>
+</div>
+
+
+<% include ./partials/footer %>

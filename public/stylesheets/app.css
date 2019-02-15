@@ -1,0 +1,115 @@
+body,html{
+background: #355C7D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+font-family: 'Cuprum', sans-serif;
+}
+.navbar{
+    background-color:rgba(83, 82, 237,0.4);
+}
+a.navbar-brand, #navWords{
+    color:white;
+    font-weight: 700;
+}
+#navWords{
+    font-size: 1.1rem;
+}
+#dets{
+    width:80%;
+}
+#readBetter{
+    background-color: rgba(128, 142, 155,0.85);
+}
+.display-4{
+    font-weight: 700;
+    color:white;
+    letter-spacing: 1.0rem;
+}
+.fa-chart-line{
+    padding-right:1rem;
+}
+#card-pic{
+    height: 30px;
+    margin: 6px 0px;
+}
+.card-title{
+    margin-bottom: 0;
+}
+#showJumb{
+    color:white;
+    border-radius: 3%;
+    background-color: rgba(128, 142, 155,0.65);
+}
+.card-text, .card-title{
+    color:black;
+}
+hr{
+    padding:0;
+    border:white .5px solid;
+}
+.card hr{
+    text-align: center;
+    padding:0;
+    border:black .5px solid;
+}
+
+
+/*new/edit*/
+.box{
+    border: .5px black solid;
+    background-color: rgba(12, 36, 97,0.3);
+    border-radius: 30px;
+}
+.box input[type="text"], .box input[type="number"], .box textarea{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #ff5e57;
+  padding: 14px 10px;
+  width: 45%;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: .25s;
+}
+#h1Name{
+    text-transform: capitalize;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/*hides the ugly number picker*/
+.box input[type="text"]:focus, .box input[type="number"]:focus, .box textarea:focus{
+  width: 280px;
+  border-color: #0fbcf9;
+}
+#descript:focus{
+    width: 45%;
+}
+.box input[type="submit"], .back{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #0fbcf9;
+  padding: 14px 10px;
+  width: 20%;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: .65s;
+  cursor: pointer;
+}
+.box input[type="submit"]:hover, .back:hover{
+  background-color: #0fbcf9;
+  color: white;
+  text-decoration: none;
+}
+::placeholder{
+    color:white;
+    opacity: 0.7;
+}

@@ -1,0 +1,91 @@
+<% include ./partials/header %>
+<style>
+body, html{
+  height: 100%;
+  margin:0;
+}
+    body{
+
+  background: url(<%=workout.image%>);
+  background-size: cover;
+  background-position: center;
+  font-family: Lato;
+}
+</style>
+<div class="show container mt-5">
+    <div id="showJumb" class="jumbotron">
+      <div id="readBetter">
+        <h1 class="text-center display-4"><%=workout.name%></h1>
+        <p class="lead"><%=workout.description%></p>
+      </div>
+      <hr class="my-4">
+      <div class="row mb-4">
+          <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Date</h5>
+                    <img id="card-pic" src="https://cdn4.iconfinder.com/data/icons/pictograms-1/512/Calendar-512.png">
+                    <p class="card-text"><%=workout.date.toDateString()%></p>
+              </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Durration</h5>
+                    <img id="card-pic" src="https://images.vexels.com/media/users/3/132347/isolated/preview/be0aa6f53b4ac58a4a3612d6dc7a7854-stopwatch-timer-icon-by-vexels.png">
+                    <p class="card-text"><%=workout.durration%> Minutes</p>
+              </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Today's Weight</h5>
+                    <img id="card-pic" src="https://static.thenounproject.com/png/575940-200.png">
+                    <p class="card-text"><%=workout.weight%> Pounds</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+          <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Average Heart Rate</h5>
+                    <img id="card-pic" src="http://www.myiconfinder.com/uploads/iconsets/256-256-92535d08218a8d3e72382c4ef34aadef.png">
+                    <p class="card-text"><%=workout.avgHeartRate%> BPM</p>
+              </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Calories</h5>
+                    <img id="card-pic" src="https://www.freeiconspng.com/uploads/fire-vector-icon-png-27.png">
+                    <p class="card-text"><%=workout.calories%> Calories Burned</p>
+              </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+              <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">Distance</h5>
+                    <img id="card-pic" src="https://cdn3.iconfinder.com/data/icons/camping-flat-colorful/614/2702_-_Distance-512.png">
+                    <p class="card-text"><%=workout.distance%> Miles</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-flex justify-content-around col-12">
+          <a href="/workouts/<%= workout._id %>/edit" class="btn btn-warning btn-lg">Edit</a>
+          <form action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-lg">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

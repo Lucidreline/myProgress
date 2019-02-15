@@ -1,0 +1,34 @@
+<% include ./partials/header %>
+
+<h1 class="text-center display-4 py-2 pb-4">Create Workout</h1>
+
+<div class="container">
+  <form autocomplete="off" action="/workouts" method="post" class=" p-5 box" >
+      
+      <div class= "row">
+        <input required type="text" name="workout[name]" placeholder="Workout Name">
+        <input type="number" name="workout[calories]" placeholder="Calories Burned">
+      </div>
+      <div class= "row">
+        <input  type="number" name="workout[durration]" placeholder="Workout Durration (minutes)">
+        <input  type="number" name="workout[avgHeartRate]" placeholder="Aveage Heart Rate (BPM)">
+      </div>
+      <div class= "row">
+        <input  type="number" name="workout[weight]" placeholder="Today's Weight (lb)">
+        <input  type="text" name="workout[image]" placeholder="Workout Image URL">
+      </div>
+      <div class= "row">
+        <input type="number" name="workout[distance]" placeholder="Distance (Miles)">
+        <textarea id="descript" name="workout[description]" placeholder="Workout Description"></textarea>
+      </div>
+      
+      <div class= "row">
+        <a class="back" href="/workouts/">Go Back</a>
+        <input type="submit" value="Log">
+      </div>
+      
+      
+      
+    </form>
+</div>
+<% include ./partials/footer %>
