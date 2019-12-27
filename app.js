@@ -9,10 +9,10 @@ var express          = require("express"),
     app              = express();
   
   
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
 app.set("view engine", "ejs");
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true, useNewUrlParser: true}));
 app.use(express.static("public"));
 app.use(methodOverride("_method"))
 app.use(expressSanitizer())
@@ -23,7 +23,7 @@ var workoutSchema = new mongoose.Schema({
     durration: Number,
     avgHeartRate: Number,
     weight: Number,
-    image: {type: String, default: "https://images.unsplash.com/photo-1517836477839-7072aaa8b121?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"},
+    image: String,
     description: String,
     date: {type: Date, default:Date.now},
     distance: Number
@@ -43,7 +43,7 @@ app.get("/", function(req, res){
 app.get("/workouts", function(req, res){
     Workout.find({}).sort({"_id": -1}).exec(function(err, workouts){
         if(err){
-            console.log("Something went wrong");
+            console.log(err.message);
         }else{
             res.render("index", {workouts: workouts})
         }
@@ -59,8 +59,16 @@ app.get("/workouts/new", function(req, res){
 app.post("/workouts", function(req,res){
     Workout.create(req.body.workout, function(err, newWorkout){
         if(err){
-            console.log("Something went wrong");
+            console.log("Could not create workout. Error: " + err.message);
         }else{
+            //add default photo if one is not given
+            if(newWorkout.image.trim() == ""){
+                newWorkout.image = "https://images.unsplash.com/photo-1517836477839-7072aaa8b121?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                newWorkout.save((errorSaving, savedWorkout)=>{
+                    return
+                    res.redirect("/workouts");
+                })
+            }
             res.redirect("/workouts");
         }
     })
@@ -70,7 +78,7 @@ app.post("/workouts", function(req,res){
 app.get("/workouts/:id", function(req, res){
     Workout.findById(req.params.id, function(err, foundWorkout){
         if(err){
-            console.log("Something Went Wrong");
+            console.log(err.message);
         }else{
             res.render("show", {workout: foundWorkout})
         }
@@ -82,7 +90,7 @@ app.get("/workouts/:id", function(req, res){
 app.get("/workouts/:id/edit", function(req, res){
     Workout.findById(req.params.id, function(err, foundWorkout){
         if(err){
-            console.log("Something Went Wrong");
+            console.log(err.message);
         }else{
             res.render("edit", {workout: foundWorkout})
         }
@@ -93,32 +101,25 @@ app.get("/workouts/:id/edit", function(req, res){
 app.put("/workouts/:id", function(req, res){
     Workout.findByIdAndUpdate(req.params.id, req.body.workout, function(err, updatedWorkout){
         if(err){
-            console.log("something went wrong");
+            console.log(err.message);
         }else{
+            if(updatedWorkout.image.trim() == ""){
+                updatedWorkout.image = "https://images.unsplash.com/photo-1517836477839-7072aaa8b121?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                updatedWorkout.save((errorSaving, savedWorkout)=>{
+                    return
+                    res.redirect("/workouts/" + req.params.id)
+                })
+            }
             res.redirect("/workouts/" + req.params.id)
         }
     })
 })
 
-
-// app.put("/workouts/:id", function(req, res){
-//     //req.body.blog.body = req.sanitize(req.body.blog.body);
-//     Workout.findByIdAndUpdate(req.params.id, req.body.workout, function(err, updatedWorkout){
-//         if(err){
-//             console.log("X")
-//         }else{
-//             res.redirect("/workouts/" + req.params.id)
-//         }
-//     })
-// })
-
-
-
 //destroy
 app.delete("/workouts/:id", function(req, res){
     Workout.findByIdAndRemove(req.params.id, function(err){
         if(err){
-            console.log("something went Wrong")
+            console.log(err.message)
         }else{
             res.redirect("/workouts")
         }
