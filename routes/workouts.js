@@ -1,20 +1,9 @@
 const express = require('express');
+const validUrl = require('valid-url'); // makes sure url's are real
 const router = express.Router();
 
-const mongoose = require('mongoose');
-var workoutSchema = new mongoose.Schema({
-    name: String,
-    calories: Number,
-    durration: Number,
-    avgHeartRate: Number,
-    weight: Number,
-    image: String,
-    description: String,
-    date: { type: Date, default: Date.now },
-    distance: Number,
-});
+const Workout = require('../models/workout');
 
-var Workout = mongoose.model('Workout', workoutSchema);
 const defaultWorkoutImage =
     'https://images.unsplash.com/photo-1517836477839-7072aaa8b121?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80';
 
@@ -40,7 +29,7 @@ router.post('/', async (req, res) => {
     try {
         let newWorkout = await Workout.create(req.body.workout);
 
-        if (newWorkout.image.trim() == '') {
+        if (!validUrl.isUri(newWorkout.image.trim())) {
             newWorkout.image = defaultWorkoutImage;
             await newWorkout.save();
         }
@@ -81,8 +70,7 @@ router.put('/:id', async (req, res) => {
             req.body.workout
         );
 
-        if (updatedWorkout.image.trim() == '') {
-            // gives the default image if they left the image url input empty
+        if (!validUrl.isUri(updatedWorkout.image.trim())) {
             updatedWorkout.image = defaultWorkoutImage;
             await updatedWorkout.save();
         }
