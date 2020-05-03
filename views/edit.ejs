@@ -3,27 +3,71 @@
 <h1 class="text-center display-4 py-2 pb-4">Create Workout</h1>
 
 <div class="container">
-  <form autocomplete="off" action="/workouts/<%=workout._id%>?_method=PUT" method="POST" method="post" class=" p-5 box" >
-      
-      <div class= "row">
-        <input  type="text" value="<%=workout.name%>" name="workout[name]" placeholder="Workout Name">
-        <input  type="text" value="<%=workout.calories%>" name="workout[calories]" placeholder="Calories Burned">
-      </div>
-      <div class= "row">
-        <input  type="text" value="<%=workout.durration%>"name="workout[durration]" placeholder="Workout Durration (minutes)">
-        <input  type="text" value="<%=workout.avgHeartRate%>"name="workout[avgHeartRate]" placeholder="Aveage Heart Rate (BPM)">
-      </div>
-      <div class= "row">
-        <input  type="text" value="<%=workout.weight%>" name="workout[weight]" placeholder="Today's Weight (lb)">
-        <input  type="text" value="<%=workout.image%>" name="workout[image]" placeholder="Workout Image URL">
-      </div>
-      <div class= "row">
-        <input type="number" name="workout[distance]" placeholder="Distance (Miles)">
-        <textarea name="workout[description]" placeholder="Workout Description"><%=workout.description%></textarea>
-      </div>
-  
-      <input type="submit" value="Log">
-      
+    <form
+        autocomplete="off"
+        action="/workouts/<%=workout._id%>?_method=PUT"
+        method="POST"
+        method="post"
+        class="p-5 box"
+    >
+        <div class="row">
+            <input
+                type="text"
+                value="<%=workout.name%>"
+                name="workout[name]"
+                placeholder="Workout Name"
+            />
+            <input
+                type="text"
+                value="<%=workout.calories%>"
+                name="workout[calories]"
+                placeholder="Calories Burned"
+            />
+        </div>
+        <div class="row">
+            <input
+                type="text"
+                value="<%=workout.durration%>"
+                name="workout[durration]"
+                placeholder="Workout Durration (minutes)"
+            />
+            <input
+                type="text"
+                value="<%=workout.avgHeartRate%>"
+                name="workout[avgHeartRate]"
+                placeholder="Aveage Heart Rate (BPM)"
+            />
+        </div>
+        <div class="row">
+            <input
+                type="text"
+                value="<%=workout.weight%>"
+                name="workout[weight]"
+                placeholder="Today's Weight (lb)"
+            />
+            <input
+                type="text"
+                value="<%=workout.image%>"
+                name="workout[image]"
+                placeholder="Workout Image URL"
+            />
+        </div>
+        <div class="row">
+            <input
+                type="number"
+                value="<%=workout.distance%>"
+                name="workout[distance]"
+                placeholder="Distance (Miles)"
+            />
+            <textarea
+                name="workout[description]"
+                placeholder="Workout Description"
+            >
+<%=workout.description%></textarea
+            >
+        </div>
+
+        <input type="submit" value="Log" />
     </form>
 </div>
 
